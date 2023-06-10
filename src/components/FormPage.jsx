@@ -25,6 +25,14 @@ const FormPage = () => {
     }));
   };
 
+  const handleInputChange = (e) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value
+    });
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -140,19 +148,28 @@ return (
                     <Form.Control type="number" name="age" onChange={handleChange} />
                     </Form.Group>
 
-                    <Form.Group controlId="formGender">
-                    <Form.Label>Gender</Form.Label>
-                    <Form.Control type="number" name="gender" onChange={handleChange} />
+                    <Form.Group className="mb-3">
+                      <Form.Label>Gender</Form.Label>
+                      <Form.Select name="gender" value={state.gender} onChange={handleInputChange}>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                      </Form.Select>
                     </Form.Group>
-                    
+                  
                     <Form.Group controlId="formSalary">
                     <Form.Label>Salary</Form.Label>
                     <Form.Control type="number" name="salary" onChange={handleChange} />
                     </Form.Group>
                     
-                    <Form.Group controlId="formCaste">
-                    <Form.Label>Caste</Form.Label>
-                    <Form.Control type="text" name="caste" onChange={handleChange} />
+                    <Form.Group className="mb-3">
+                      <Form.Label>Category</Form.Label>
+                      <Form.Select name="category" value={state.category} onChange={handleInputChange}>
+                        <option>General</option>
+                        <option>OBC</option>
+                        <option>SC</option>
+                        <option>ST</option>
+                      </Form.Select>
                     </Form.Group>
 
                     <Form.Group controlId="formState">
