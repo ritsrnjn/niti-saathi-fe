@@ -42,9 +42,18 @@ const FormPage = () => {
 
     try {
 
-      const response = await axios.post('http://127.0.0.1:5000/api', { query });
+      const response = await axios.post('http://127.0.0.1:5000/api', { 
+        name: state.name,
+        age: state.age,
+        gender: state.gender,
+        salary: state.salary,
+        caste: state.caste,
+        state: state.state,
+        additionalInfo: state.additionalInfo
 
-      setResponse(response.data);  // Add this line
+       });
+
+      setResponse(response.data.policies);  // Add this line
 
       console.log(response.data);
 
@@ -167,8 +176,8 @@ return (
                       <Form.Select name="category" value={state.category} onChange={handleInputChange}>
                         <option>General</option>
                         <option>OBC</option>
-                        <option>SC</option>
-                        <option>ST</option>
+                        <option>Scheduled Caste</option>
+                        <option>Scheduled Tribe</option>
                       </Form.Select>
                     </Form.Group>
 
